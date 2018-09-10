@@ -11,5 +11,26 @@ pipeline {
 
       }
     }
+    stage('Test') {
+      steps {
+        tool(name: 'MAVEN', type: 'maven')
+        sh 'mvn test'
+      }
+    }
+    stage('Package') {
+      steps {
+        sh 'mvn package'
+      }
+    }
+    stage('Install') {
+      steps {
+        sh 'mvn install'
+      }
+    }
+    stage('deploy') {
+      steps {
+        sh 'mvn deploy'
+      }
+    }
   }
 }
