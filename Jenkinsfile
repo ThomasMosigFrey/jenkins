@@ -10,7 +10,7 @@ node ("windows") {
       mvnHome = tool 'MAVEN'
    }
    stage('Build') {
-   dir('SimpleApp') {
+      dir('SimpleApp') {
          // Run the maven build
          if (isUnix()) {
             sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
