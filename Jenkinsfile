@@ -14,22 +14,26 @@ pipeline {
     stage('Test') {
       steps {
         tool(name: 'MAVEN', type: 'maven')
-        sh 'mvn test'
+        dir(path: 'SimpleApp') {
+          sh 'mvn test'
+        }
+
       }
     }
     stage('Package') {
       steps {
-        sh 'mvn package'
+        dir(path: 'SimpleApp') {
+          sh 'mvn package'
+        }
+
       }
     }
     stage('Install') {
       steps {
-        sh 'mvn install'
-      }
-    }
-    stage('deploy') {
-      steps {
-        sh 'mvn deploy'
+        dir(path: 'SimpleApp') {
+          sh 'mvn install'
+        }
+
       }
     }
   }
