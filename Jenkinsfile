@@ -17,6 +17,7 @@ pipeline {
         dir(path: 'SimpleApp') {
           sh 'mvn test'
           archiveArtifacts(artifacts: 'target/surefire-reports/*xml', allowEmptyArchive: true, caseSensitive: true)
+          junit(testResults: 'target/surefire-reports/*xml', allowEmptyResults: true)
         }
 
       }
