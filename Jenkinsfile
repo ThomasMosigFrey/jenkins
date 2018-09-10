@@ -16,6 +16,7 @@ pipeline {
         tool(name: 'MAVEN', type: 'maven')
         dir(path: 'SimpleApp') {
           sh 'mvn test'
+          archiveArtifacts(artifacts: '**/target/*xml', allowEmptyArchive: true, caseSensitive: true)
         }
 
       }
@@ -23,7 +24,7 @@ pipeline {
     stage('Package') {
       steps {
         dir(path: 'SimpleApp') {
-          sh 'mvn package'
+          sh 'mvn package -DskipTests'
         }
 
       }
@@ -31,7 +32,7 @@ pipeline {
     stage('Install') {
       steps {
         dir(path: 'SimpleApp') {
-          sh 'mvn install'
+          sh 'mvn install -DskipTests'
         }
 
       }
