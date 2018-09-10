@@ -16,7 +16,7 @@ pipeline {
         tool(name: 'MAVEN', type: 'maven')
         dir(path: 'SimpleApp') {
           sh 'mvn test'
-          archiveArtifacts(artifacts: '**/target/*xml', allowEmptyArchive: true, caseSensitive: true)
+          archiveArtifacts(artifacts: '**/junit/*xml', allowEmptyArchive: true, caseSensitive: true)
         }
 
       }
