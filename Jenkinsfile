@@ -23,6 +23,7 @@ pipeline {
       }
     }
     stage('Package') {
+      tool(name: 'MAVEN', type: 'maven')
       steps {
         dir(path: 'SimpleApp') {
           sh 'mvn package -DskipTests'
@@ -32,6 +33,7 @@ pipeline {
     }
     stage('Install') {
       steps {
+        tool(name: 'MAVEN', type: 'maven')
         dir(path: 'SimpleApp') {
           sh 'mvn install -DskipTests'
         }
