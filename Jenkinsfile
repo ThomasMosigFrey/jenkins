@@ -1,9 +1,9 @@
 pipeline {
-  agent unix
+  agent any
   stages {
     stage('init') {
       steps {
-        git(url: 'https://thomasfrey@bitbucket.org/thomasfrey/jenkins_repository.git', branch: 'master', poll: true)
+        git(url: 'https://github.com/ThomasMosigFrey/jenkins.git', branch: 'master', poll: true)
         echo 'start'
         dir(path: 'SimpleApp') {
           sh 'echo Init'
@@ -13,7 +13,6 @@ pipeline {
     }
     stage('Test') {
       steps {
-        tool(name: 'MAVEN', type: 'maven')
         dir(path: 'SimpleApp') {
           sh 'mvn test'
           archiveArtifacts(artifacts: 'target/surefire-reports/*xml', allowEmptyArchive: true, caseSensitive: true)
@@ -23,7 +22,6 @@ pipeline {
       }
     }
     stage('Package') {
-      tool(name: 'MAVEN', type: 'maven')
       steps {
         dir(path: 'SimpleApp') {
           sh 'mvn package -DskipTests'
@@ -33,11 +31,9 @@ pipeline {
     }
     stage('Install') {
       steps {
-        tool(name: 'MAVEN', type: 'maven')
         dir(path: 'SimpleApp') {
           sh 'mvn install -DskipTests'
         }
-
       }
     }
   }
