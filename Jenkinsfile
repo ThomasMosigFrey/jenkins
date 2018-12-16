@@ -25,8 +25,8 @@ pipeline {
       steps {
         dir(path: 'SimpleApp') {
           sh 'mvn package -DskipTests'
+           archiveArtifacts(artifacts: 'target/*jar', allowEmptyArchive: true, caseSensitive: true)
         }
-
       }
     }
     stage('Install') {
