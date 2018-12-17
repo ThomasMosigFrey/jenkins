@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ejb-stateful">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../Applications/DevTools/Eclipse.app/Contents/MacOS"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="Maven Dependencies.libraryclasspath">
+        <pathelement location="../../../../.m2/repository/org/javaee7/test-utils/1.0-SNAPSHOT/test-utils-1.0-SNAPSHOT.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/container/arquillian-container-test-api/1.1.14.Final/arquillian-container-test-api-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/shrinkwrap-api/1.2.6/shrinkwrap-api-1.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/fish/payara/arquillian/arquillian-payara-server-4-managed/1.0.Beta3-m1/arquillian-payara-server-4-managed-1.0.Beta3-m1.jar"/>
+        <pathelement location="../../../../.m2/repository/fish/payara/arquillian/payara-container-4-common/1.0.Beta3-m1/payara-container-4-common-1.0.Beta3-m1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-cdi/1.1.14.Final/arquillian-testenricher-cdi-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-ejb/1.1.14.Final/arquillian-testenricher-ejb-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-resource/1.1.14.Final/arquillian-testenricher-resource-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/testenricher/arquillian-testenricher-initialcontext/1.1.14.Final/arquillian-testenricher-initialcontext-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/javax/javaee-api/7.0/javaee-api-7.0.jar"/>
+        <pathelement location="../../../../.m2/repository/com/sun/mail/javax.mail/1.5.0/javax.mail-1.5.0.jar"/>
+        <pathelement location="../../../../.m2/repository/javax/activation/activation/1.1/activation-1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/junit/junit/4.12/junit-4.12.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/assertj/assertj-core/1.5.0/assertj-core-1.5.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/junit/arquillian-junit-container/1.1.14.Final/arquillian-junit-container-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/junit/arquillian-junit-core/1.1.14.Final/arquillian-junit-core-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/test/arquillian-test-api/1.1.14.Final/arquillian-test-api-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/core/arquillian-core-api/1.1.14.Final/arquillian-core-api-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/test/arquillian-test-spi/1.1.14.Final/arquillian-test-spi-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/core/arquillian-core-spi/1.1.14.Final/arquillian-core-spi-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/container/arquillian-container-test-spi/1.1.14.Final/arquillian-container-test-spi-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/core/arquillian-core-impl-base/1.1.14.Final/arquillian-core-impl-base-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/test/arquillian-test-impl-base/1.1.14.Final/arquillian-test-impl-base-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/container/arquillian-container-impl-base/1.1.14.Final/arquillian-container-impl-base-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/config/arquillian-config-api/1.1.14.Final/arquillian-config-api-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/config/arquillian-config-impl-base/1.1.14.Final/arquillian-config-impl-base-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/container/arquillian-container-test-impl-base/1.1.14.Final/arquillian-container-test-impl-base-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/shrinkwrap-impl-base/1.2.6/shrinkwrap-impl-base-1.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/shrinkwrap-spi/1.2.6/shrinkwrap-spi-1.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/protocol/arquillian-protocol-servlet/1.1.14.Final/arquillian-protocol-servlet-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/container/arquillian-container-spi/1.1.14.Final/arquillian-container-spi-1.1.14.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-spi/2.0.0/shrinkwrap-descriptors-spi-2.0.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-impl-maven/2.2.6/shrinkwrap-resolver-impl-maven-2.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-api-maven/2.2.6/shrinkwrap-resolver-api-maven-2.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-api/2.2.6/shrinkwrap-resolver-api-2.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-spi-maven/2.2.6/shrinkwrap-resolver-spi-maven-2.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-spi/2.2.6/shrinkwrap-resolver-spi-2.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/aether/aether-connector-basic/1.0.0.v20140518/aether-connector-basic-1.0.0.v20140518.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/aether/aether-transport-wagon/1.0.0.v20140518/aether-transport-wagon-1.0.0.v20140518.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/maven/maven-model/3.2.5/maven-model-3.2.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/maven/maven-settings-builder/3.2.5/maven-settings-builder-3.2.5.jar"/>
+        <pathelement location="../../../../.m2/repository/com/google/guava/guava/18.0/guava-18.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.jar"/>
+        <pathelement location="../../../../.m2/repository/org/codehaus/plexus/plexus-utils/3.0.20/plexus-utils-3.0.20.jar"/>
+        <pathelement location="../../../../.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/maven/wagon/wagon-provider-api/2.6/wagon-provider-api-2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/maven/wagon/wagon-file/2.6/wagon-file-2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/maven/wagon/wagon-http-lightweight/2.6/wagon-http-lightweight-2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/maven/wagon/wagon-http-shared/2.6/wagon-http-shared-2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jsoup/jsoup/1.7.2/jsoup-1.7.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-impl-maven-archive/2.2.6/shrinkwrap-resolver-impl-maven-archive-2.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-api-maven-archive/2.2.6/shrinkwrap-resolver-api-maven-archive-2.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/resolver/shrinkwrap-resolver-spi-maven-archive/2.2.6/shrinkwrap-resolver-spi-maven-archive-2.2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.0.M1/org.eclipse.sisu.plexus-0.3.0.M1.jar"/>
+        <pathelement location="../../../../.m2/repository/javax/enterprise/cdi-api/1.0/cdi-api-1.0.jar"/>
+        <pathelement location="../../../../.m2/repository/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar"/>
+        <pathelement location="../../../../.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.0.M1/org.eclipse.sisu.inject-0.3.0.M1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/codehaus/plexus/plexus-compiler-javac/2.3/plexus-compiler-javac-2.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/codehaus/plexus/plexus-compiler-api/2.3/plexus-compiler-api-2.3.jar"/>
+        <pathelement location="../../../../.m2/repository/xmlunit/xmlunit/1.5/xmlunit-1.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/skyscreamer/jsonassert/1.2.1/jsonassert-1.2.1.jar"/>
+        <pathelement location="../../../../.m2/repository/httpunit/httpunit/1.7/httpunit-1.7.jar"/>
+        <pathelement location="../../../../.m2/repository/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar"/>
+        <pathelement location="../../../../.m2/repository/jtidy/jtidy/4aug2000r7-dev/jtidy-4aug2000r7-dev.jar"/>
+        <pathelement location="../../../../.m2/repository/net/sourceforge/htmlunit/htmlunit/2.31/htmlunit-2.31.jar"/>
+        <pathelement location="../../../../.m2/repository/xalan/xalan/2.7.2/xalan-2.7.2.jar"/>
+        <pathelement location="../../../../.m2/repository/xalan/serializer/2.7.2/serializer-2.7.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/commons/commons-text/1.3/commons-text-1.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/httpcomponents/httpmime/4.5.5/httpmime-4.5.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/httpcomponents/httpcore/4.4.9/httpcore-4.4.9.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-codec/commons-codec/1.10/commons-codec-1.10.jar"/>
+        <pathelement location="../../../../.m2/repository/net/sourceforge/htmlunit/htmlunit-core-js/2.31/htmlunit-core-js-2.31.jar"/>
+        <pathelement location="../../../../.m2/repository/net/sourceforge/htmlunit/neko-htmlunit/2.31/neko-htmlunit-2.31.jar"/>
+        <pathelement location="../../../../.m2/repository/xerces/xercesImpl/2.11.0/xercesImpl-2.11.0.jar"/>
+        <pathelement location="../../../../.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar"/>
+        <pathelement location="../../../../.m2/repository/net/sourceforge/htmlunit/htmlunit-cssparser/1.0.0/htmlunit-cssparser-1.0.0.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-io/commons-io/2.6/commons-io-2.6.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-net/commons-net/3.6/commons-net-3.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/jetty/websocket/websocket-client/9.4.10.v20180503/websocket-client-9.4.10.v20180503.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/jetty/jetty-client/9.4.10.v20180503/jetty-client-9.4.10.v20180503.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/jetty/jetty-http/9.4.10.v20180503/jetty-http-9.4.10.v20180503.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/jetty/jetty-xml/9.4.10.v20180503/jetty-xml-9.4.10.v20180503.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/jetty/jetty-util/9.4.10.v20180503/jetty-util-9.4.10.v20180503.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/jetty/jetty-io/9.4.10.v20180503/jetty-io-9.4.10.v20180503.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/jetty/websocket/websocket-common/9.4.10.v20180503/websocket-common-9.4.10.v20180503.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/jetty/websocket/websocket-api/9.4.10.v20180503/websocket-api-9.4.10.v20180503.jar"/>
+        <pathelement location="../../../../.m2/repository/rhino/js/1.7R1/js-1.7R1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/json/json/20131018/json-20131018.jar"/>
+        <pathelement location="../../../../.m2/repository/com/jayway/awaitility/awaitility/1.6.0/awaitility-1.6.0.jar"/>
+        <pathelement location="../../../../.m2/repository/cglib/cglib-nodep/3.1/cglib-nodep-3.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/objenesis/objenesis/2.1/objenesis-2.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/omnifaces/omniutils/0.10/omniutils-0.10.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/arquillian-tomee-embedded/7.0.2/arquillian-tomee-embedded-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/arquillian-openejb-transaction-provider/7.0.2/arquillian-openejb-transaction-provider-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/extension/arquillian-transaction-impl-base/1.0.1.Final/arquillian-transaction-impl-base-1.0.1.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/extension/arquillian-transaction-api/1.0.1.Final/arquillian-transaction-api-1.0.1.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/arquillian/extension/arquillian-transaction-spi/1.0.1.Final/arquillian-transaction-spi-1.0.1.Final.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/myfaces/core/myfaces-api/2.2.11/myfaces-api-2.2.11.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/geronimo/specs/geronimo-atinject_1.0_spec/1.0/geronimo-atinject_1.0_spec-1.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-impl-javaee/2.0.0/shrinkwrap-descriptors-impl-javaee-2.0.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-impl-base/2.0.0/shrinkwrap-descriptors-impl-base-2.0.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-api-javaee/2.0.0/shrinkwrap-descriptors-api-javaee-2.0.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-api-base/2.0.0/shrinkwrap-descriptors-api-base-2.0.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/javaee-api/7.0-1/javaee-api-7.0-1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/arquillian-tomee-common/7.0.2/arquillian-tomee-common-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/arquillian-common/7.0.2/arquillian-common-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/codehaus/swizzle/swizzle-stream/1.6.2/swizzle-stream-1.6.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/tomee-embedded/7.0.2/tomee-embedded-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/tomee-catalina/7.0.2/tomee-catalina-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/tomee-jdbc/7.0.2/tomee-jdbc-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/tomee-juli/7.0.2/tomee-juli-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/tomee-util/7.0.2/tomee-util-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/javaee-api/7.0-1/javaee-api-7.0-1-tomcat.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-websocket-api/8.5.6/tomcat-websocket-api-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/tomee-myfaces/7.0.2/tomee-myfaces-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openwebbeans/openwebbeans-jsf/1.7.0/openwebbeans-jsf-1.7.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openwebbeans/openwebbeans-impl/1.7.0/openwebbeans-impl-1.7.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openwebbeans/openwebbeans-web/1.7.0/openwebbeans-web-1.7.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openwebbeans/openwebbeans-el22/1.7.0/openwebbeans-el22-1.7.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-core/7.0.2/openejb-core-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/mbean-annotation-api/7.0.2/mbean-annotation-api-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-jpa-integration/7.0.2/openejb-jpa-integration-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-api/7.0.2/openejb-api-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-loader/7.0.2/openejb-loader-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-javaagent/7.0.2/openejb-javaagent-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-jee/7.0.2/openejb-jee-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-jee-accessors/7.0.2/openejb-jee-accessors-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/metatype/sxc/sxc-jaxb-core/0.8/sxc-jaxb-core-0.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/metatype/sxc/sxc-runtime/0.8/sxc-runtime-0.8.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-cli/commons-cli/1.2/commons-cli-1.2.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/activemq/activemq-ra/5.14.1/activemq-ra-5.14.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/activemq/activemq-kahadb-store/5.14.1/activemq-kahadb-store-5.14.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/activemq/protobuf/activemq-protobuf/1.1/activemq-protobuf-1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/activemq/activemq-broker/5.14.1/activemq-broker-5.14.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/activemq/activemq-client/5.14.1/activemq-client-5.14.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/fusesource/hawtbuf/hawtbuf/1.11/hawtbuf-1.11.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/activemq/activemq-openwire-legacy/5.14.1/activemq-openwire-legacy-5.14.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/activemq/activemq-jdbc-store/5.14.1/activemq-jdbc-store-5.14.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/geronimo/components/geronimo-connector/3.1.3/geronimo-connector-3.1.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/geronimo/components/geronimo-transaction/3.1.3/geronimo-transaction-3.1.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/objectweb/howl/howl/1.0.1-1/howl-1.0.1-1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/geronimo/javamail/geronimo-javamail_1.4_mail/1.9.0-alpha-2/geronimo-javamail_1.4_mail-1.9.0-alpha-2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/xbean/xbean-asm5-shaded/4.5/xbean-asm5-shaded-4.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/xbean/xbean-finder-shaded/4.5/xbean-finder-shaded-4.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/xbean/xbean-naming/4.5/xbean-naming-4.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/xbean/xbean-bundleutils/4.5/xbean-bundleutils-4.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/hsqldb/hsqldb/2.3.2/hsqldb-2.3.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/commons/commons-dbcp2/2.1/commons-dbcp2-2.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/commons/commons-pool2/2.3/commons-pool2-2.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openejb/shade/quartz-openejb-shade/2.2.1/quartz-openejb-shade-2.2.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/slf4j/slf4j-jdk14/1.7.21/slf4j-jdk14-1.7.21.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openwebbeans/openwebbeans-spi/1.7.0/openwebbeans-spi-1.7.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openwebbeans/openwebbeans-ejb/1.7.0/openwebbeans-ejb-1.7.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openwebbeans/openwebbeans-ee/1.7.0/openwebbeans-ee-1.7.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openwebbeans/openwebbeans-ee-common/1.7.0/openwebbeans-ee-common-1.7.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openjpa/openjpa/2.4.1/openjpa-2.4.1.jar"/>
+        <pathelement location="../../../../.m2/repository/net/sourceforge/serp/serp/1.15.1/serp-1.15.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/bval/bval-core/1.1.2/bval-core-1.1.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/bval/bval-jsr/1.1.2/bval-jsr-1.1.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/myfaces/core/myfaces-impl/2.2.11/myfaces-impl-2.2.11.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-digester/commons-digester/1.8/commons-digester-1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/openejb/patch/openejb-jstl/1.2/openejb-jstl-1.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-jdbc/8.5.6/tomcat-jdbc-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-dbcp/8.5.6/tomcat-dbcp-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-catalina/8.5.6/tomcat-catalina-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-servlet-api/8.5.6/tomcat-servlet-api-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-jsp-api/8.5.6/tomcat-jsp-api-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-api/8.5.6/tomcat-api-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-jni/8.5.6/tomcat-jni-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-util/8.5.6/tomcat-util-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-util-scan/8.5.6/tomcat-util-scan-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-catalina-ha/8.5.6/tomcat-catalina-ha-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-tribes/8.5.6/tomcat-tribes-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-coyote/8.5.6/tomcat-coyote-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-jasper/8.5.6/tomcat-jasper-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/eclipse/jdt/core/compiler/ecj/4.4/ecj-4.4.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/velocity/velocity/1.6.4/velocity-1.6.4.jar"/>
+        <pathelement location="../../../../.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-client/7.0.2/openejb-client-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/tomee-jaxrs/7.0.2/tomee-jaxrs-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-websocket/8.5.6/tomcat-websocket-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/tomee-webservices/7.0.2/tomee-webservices-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-webservices/7.0.2/openejb-webservices-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/wsdl4j/wsdl4j/1.6.3/wsdl4j-1.6.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-rest/7.0.2/openejb-rest-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-cxf-rs/7.0.2/openejb-cxf-rs-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-cxf-transport/7.0.2/openejb-cxf-transport-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-transports-http/3.1.8/cxf-rt-transports-http-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-management/3.1.8/cxf-rt-management-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-rs-service-description/3.1.8/cxf-rt-rs-service-description-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-rs-client/3.1.8/cxf-rt-rs-client-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-core/3.1.8/cxf-core-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/codehaus/woodstox/woodstox-core-asl/4.4.1/woodstox-core-asl-4.4.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/codehaus/woodstox/stax2-api/3.1.4/stax2-api-3.1.4.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/ws/xmlschema/xmlschema-core/2.2.1/xmlschema-core-2.2.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-frontend-jaxrs/3.1.8/cxf-rt-frontend-jaxrs-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-rs-extension-search/3.1.8/cxf-rt-rs-extension-search-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-rs-security-cors/3.1.8/cxf-rt-rs-security-cors-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-rs-security-oauth2/3.1.8/cxf-rt-rs-security-oauth2-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-rs-security-jose-jaxrs/3.1.8/cxf-rt-rs-security-jose-jaxrs-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-security/3.1.8/cxf-rt-security-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-rs-security-jose/3.1.8/cxf-rt-rs-security-jose-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-rs-json-basic/3.1.8/cxf-rt-rs-json-basic-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-rs-extension-providers/3.1.8/cxf-rt-rs-extension-providers-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/johnzon/johnzon-jaxrs/0.9.5/johnzon-jaxrs-0.9.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/johnzon/johnzon-mapper/0.9.5/johnzon-mapper-0.9.5.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-cxf/7.0.2/openejb-cxf-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/wss4j/wss4j-ws-security-dom/2.1.7/wss4j-ws-security-dom-2.1.7.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/wss4j/wss4j-ws-security-common/2.1.7/wss4j-ws-security-common-2.1.7.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/santuario/xmlsec/2.0.7/xmlsec-2.0.7.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-saml-impl/3.1.1/opensaml-saml-impl-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-profile-api/3.1.1/opensaml-profile-api-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-core/3.1.1/opensaml-core-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-saml-api/3.1.1/opensaml-saml-api-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-xmlsec-api/3.1.1/opensaml-xmlsec-api-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-soap-api/3.1.1/opensaml-soap-api-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-security-impl/3.1.1/opensaml-security-impl-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-security-api/3.1.1/opensaml-security-api-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/cryptacular/cryptacular/1.0/cryptacular-1.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/bouncycastle/bcprov-jdk15on/1.51/bcprov-jdk15on-1.51.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-xmlsec-impl/3.1.1/opensaml-xmlsec-impl-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/net/shibboleth/utilities/java-support/7.1.1/java-support-7.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/joda-time/joda-time/2.7/joda-time-2.7.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-xacml-impl/3.1.1/opensaml-xacml-impl-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-xacml-api/3.1.1/opensaml-xacml-api-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-xacml-saml-impl/3.1.1/opensaml-xacml-saml-impl-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/opensaml/opensaml-xacml-saml-api/3.1.1/opensaml-xacml-saml-api-3.1.1.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jasypt/jasypt/1.9.2/jasypt-1.9.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/wss4j/wss4j-policy/2.1.7/wss4j-policy-2.1.7.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/neethi/neethi/3.0.3/neethi-3.0.3.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/wss4j/wss4j-ws-security-stax/2.1.7/wss4j-ws-security-stax-2.1.7.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/wss4j/wss4j-bindings/2.1.7/wss4j-bindings-2.1.7.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/wss4j/wss4j-ws-security-policy-stax/2.1.7/wss4j-ws-security-policy-stax-2.1.7.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-frontend-jaxws/3.1.8/cxf-rt-frontend-jaxws-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/xml-resolver/xml-resolver/1.2/xml-resolver-1.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-bindings-soap/3.1.8/cxf-rt-bindings-soap-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-wsdl/3.1.8/cxf-rt-wsdl-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-databinding-jaxb/3.1.8/cxf-rt-databinding-jaxb-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-bindings-xml/3.1.8/cxf-rt-bindings-xml-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-frontend-simple/3.1.8/cxf-rt-frontend-simple-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-ws-addr/3.1.8/cxf-rt-ws-addr-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-ws-policy/3.1.8/cxf-rt-ws-policy-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-ws-security/3.1.8/cxf-rt-ws-security-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/cxf/cxf-rt-security-saml/3.1.8/cxf-rt-security-saml-3.1.8.jar"/>
+        <pathelement location="../../../../.m2/repository/com/sun/xml/messaging/saaj/saaj-impl/1.3.18/saaj-impl-1.3.18.jar"/>
+        <pathelement location="../../../../.m2/repository/org/jvnet/mimepull/mimepull/1.7/mimepull-1.7.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/tomee-common/7.0.2/tomee-common-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/tomee-loader/7.0.2/tomee-loader-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-juli/8.5.6/tomcat-juli-8.5.6.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-server/7.0.2/openejb-server-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-ejbd/7.0.2/openejb-ejbd-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomee/openejb-http/7.0.2/openejb-http-7.0.2.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/batchee/batchee-jbatch/0.3-incubating/batchee-jbatch-0.3-incubating.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/xbean/xbean-reflect/3.16/xbean-reflect-3.16.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/johnzon/johnzon-core/0.9.3-incubating/johnzon-core-0.9.3-incubating.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-el-api/8.5.0/tomcat-el-api-8.5.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/tomcat/tomcat-jasper-el/8.5.0/tomcat-jasper-el-8.5.0.jar"/>
+        <pathelement location="../../../../.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar"/>
+    </path>
+    <path id="ejb-stateful.classpath">
+        <pathelement location="target/classes"/>
+        <pathelement location="target/test-classes"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.ejb-stateful.classpath">
+        <path refid="ejb-stateful.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.java (1).classpath">
+        <path refid="ejb-stateful.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <mkdir dir="target/test-classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="src/test/java">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+        <delete dir="target/test-classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <classpath refid="ejb-stateful.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/test/java"/>
+            <classpath refid="ejb-stateful.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="ejb-stateful">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.javaee7.ejb.stateful.CartBeanStatefulnessTest" todir="${junit.output.dir}"/>
+            <test name="org.javaee7.ejb.stateful.CartBeanTest" todir="${junit.output.dir}"/>
+            <test name="org.javaee7.ejb.stateful.CartBeanWithInterfaceTest" todir="${junit.output.dir}"/>
+            <test name="org.javaee7.ejb.stateful.ReentrantCallTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.ejb-stateful.classpath"/>
+        </junit>
+    </target>
+    <target name="java (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.javaee7.ejb.stateful.CartBeanStatefulnessTest" todir="${junit.output.dir}"/>
+            <test name="org.javaee7.ejb.stateful.CartBeanTest" todir="${junit.output.dir}"/>
+            <test name="org.javaee7.ejb.stateful.CartBeanWithInterfaceTest" todir="${junit.output.dir}"/>
+            <test name="org.javaee7.ejb.stateful.ReentrantCallTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.java (1).classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
