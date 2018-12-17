@@ -1,8 +1,11 @@
 pipeline {
-  agent any
+  agent {
+  	label = "unix"
+  }
   
   stages {
     stage('init') {
+
       steps {
         git(url: 'https://github.com/ThomasMosigFrey/jenkins.git', branch: 'master', poll: true)
         echo 'start'
