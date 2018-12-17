@@ -4,6 +4,12 @@ pipeline {
     stage('Init') {
       parallel {
         stage('Init unix') {
+          agent {
+            node {
+              label 'unix'
+            }
+
+          }
           steps {
             git(url: 'https://github.com/ThomasMosigFrey/jenkins.git', branch: 'master', poll: true)
             timeout(time: 4, unit: 'MINUTES') {
@@ -13,7 +19,7 @@ pipeline {
               }
 
               dir(path: 'scripts') {
-                sh 'sh runTests.sh'
+                sh 'sh ./runTests.sh'
               }
 
             }
@@ -21,6 +27,12 @@ pipeline {
           }
         }
         stage('init windows') {
+          agent {
+            node {
+              label 'windows'
+            }
+
+          }
           steps {
             git(url: 'https://github.com/ThomasMosigFrey/jenkins.git', branch: 'master')
           }
