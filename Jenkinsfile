@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-  	label = "unix"
-  }
+  agent any
   stages {
     stage('init') {
 
