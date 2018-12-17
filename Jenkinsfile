@@ -1,9 +1,7 @@
 pipeline {
-
   agent {
   	label = "unix"
   }
-  
   stages {
     stage('init') {
 
@@ -13,7 +11,6 @@ pipeline {
         dir(path: 'SimpleApp') {
           sh 'echo Init'
         }
-
       }
     }
     stage('Test') {
@@ -23,7 +20,6 @@ pipeline {
           archiveArtifacts(artifacts: 'target/surefire-reports/*xml', allowEmptyArchive: true, caseSensitive: true)
           junit(testResults: 'target/surefire-reports/*xml', allowEmptyResults: true)
         }
-
       }
     }
     stage('Package') {
