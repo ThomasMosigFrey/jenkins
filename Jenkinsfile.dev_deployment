@@ -1,0 +1,15 @@
+pipeline {
+  agent any
+  stages {
+    stage('Init') {
+      steps {
+        git(url: 'https://github.com/ThomasMosigFrey/Artefacts.git', branch: 'master', poll: true)
+      }
+    }
+    stage('DEV_Rollout') {
+      steps {
+          sh 'echo mvn deploy -DskipTests'
+      }
+    }
+  }
+}
