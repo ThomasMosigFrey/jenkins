@@ -24,7 +24,8 @@ pipeline {
   }
   post {
       success {
-       sh 'echo git push ..'   
+       sh 'echo git push ..'
+       sh 'cp "target/*jar" /tmp'
       }
   }
 }
