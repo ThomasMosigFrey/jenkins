@@ -22,4 +22,9 @@ pipeline {
       }
     }
   }
+  post {
+      success {
+       sh 'echo git push ..'   
+      }
+  }
 }
