@@ -24,8 +24,8 @@ pipeline {
   }
   post {
       success {
-       sh 'echo git push ..'
-       sh 'cp "target/*jar" /tmp'
+       sh 'echo mvn deploy ...'
+       emailext( to: 'thomas@mosig-frey.de' , subject : 'build successful' body: 'Dear user, ...' ) 
       }
   }
 }
