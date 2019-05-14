@@ -5,19 +5,19 @@ pipeline {
   }
   stages {  
     stage('Init') {
-      agent { node { label 'linux' } }
+      agent { node { label 'master' } }
       steps {
         sh 'echo $LUA_HOME'        
       }
     }
     stage('Compile') {
-      agent { label 'linux' }
+      agent { label 'master' }
       steps {
         sh 'echo mvn compile'
       }
     }
     stage('Package') {
-      agent { node { label 'linux' } }
+      agent { node { label 'master' } }
       steps {
           sh 'echo mvn package -DskipTests'
           archiveArtifacts(artifacts: 'target/*jar', allowEmptyArchive: true, caseSensitive: true)
