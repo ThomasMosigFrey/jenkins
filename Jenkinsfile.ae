@@ -26,6 +26,7 @@ pipeline {
   }
   
   post {
+      agent { node { label 'master' } }
       success {
         sh 'echo mvn deploy ...'
         emailext( to: 'alexander.balda@a-eberle.de' , subject : 'build successful', body: 'Dear Alex, ...' ) 
