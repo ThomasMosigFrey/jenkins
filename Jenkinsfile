@@ -25,7 +25,7 @@ pipeline {
   post {
       success {
        sh 'echo mvn deploy ...'
-       emailext( to: 'thomas@mosig-frey.de' , subject : 'build successful' body: 'Dear user, ...' ) 
+       emailext( to: 'thomas@mosig-frey.de' , subject : 'build successful', body: 'Dear user, ...' ) 
       }
   }
 }
