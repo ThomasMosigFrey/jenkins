@@ -20,10 +20,11 @@ pipeline {
       agent { node { label 'master' } }
       steps {
           sh 'echo mvn package -DskipTests'
-          archiveArtifacts(artifacts: 'target/*jar', allowEmptyArchive: true, caseSensitive: true)
+          // archiveArtifacts(artifacts: 'target/*jar', allowEmptyArchive: true, caseSensitive: true)
       }
     }
   }
+  
   post {
       success {
         sh 'echo mvn deploy ...'
