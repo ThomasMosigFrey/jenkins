@@ -1,0 +1,33 @@
+pipeline {
+  agent none
+  environment {
+    LUA_HOME = '/tmp/lua_test'
+  }
+  stages {  
+    stage('Init') {
+      agent { node { label 'linux' } }
+      steps {
+        sh 'echo $LUA_HOME'        
+      }
+    }
+    stage('Compile') {
+      agent { label 'linux' }
+      steps {
+        sh 'echo mvn compile'
+      }
+    }
+    stage('Package') {
+      agent { node { label 'linux' } }
+      steps {
+          sh 'echo mvn package -DskipTests'
+          archiveArtifacts(artifacts: 'target/*jar', allowEmptyArchive: true, caseSensitive: true)
+      }
+    }
+  }
+  post {
+      success {
+        sh 'echo mvn deploy ...'
+        emailext( to: 'alexander.balda@a-eberle.de' , subject : 'build successful', body: 'Dear Alex, ...' ) 
+      }
+    }
+}
