@@ -73,12 +73,6 @@ pipeline {
         dir(path: 'SimpleApp') {
           sh '${MAVEN_HOME}/bin/mvn package'
         }
-        dir(path: 'ejb/stateful') {
-          sh '${MAVEN_HOME}/bin/mvn package'
-        }
-        dir(path: 'ejb/stateless') {
-          sh '${MAVEN_HOME}/bin/mvn package'
-        }
         dir(path: 'jms') {
           sh '${MAVEN_HOME}/bin/mvn package'
         }        
