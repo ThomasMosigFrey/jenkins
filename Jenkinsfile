@@ -20,6 +20,7 @@ pipeline {
 
             }
 
+            libraryResource 'DHL_Jenkins_LIB'
           }
         }
 
@@ -128,9 +129,6 @@ pipeline {
   tools {
     jdk 'linux_jdk1.8.0_172'
     maven 'linux_M3'
-  }
-  environment {
-    MAVEN = '/opt/maven'
   }
   post {
     failure {
