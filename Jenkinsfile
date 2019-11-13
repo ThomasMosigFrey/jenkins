@@ -54,11 +54,19 @@ pipeline {
     stage('test') {
       agent { label 'linux'}
       steps {
-        lock(resource: 'Lock') {
-          dir(path: 'SimpleApp') {
-            sh '${MAVEN_HOME}/bin/mvn test'
-          }
+        dir(path: 'SimpleApp') {
+          sh '${MAVEN_HOME}/bin/mvn test'
         }
+        dir(path: 'ejb/stateless') {
+          sh '${MAVEN_HOME}/bin/mvn test'
+        }
+        dir(path: 'ejb/stateful') {
+          sh '${MAVEN_HOME}/bin/mvn test'
+        }
+        dir(path: 'jms') {
+          sh '${MAVEN_HOME}/bin/mvn test'
+        }
+        junit '**/surefile*/*.xml
       }
     }
     stage('save_check_results') {
@@ -74,12 +82,15 @@ pipeline {
         dir(path: 'SimpleApp') {
           sh '${MAVEN_HOME}/bin/mvn package'
         }
-        dir(path: 'ekb/stateful') {
+        dir(path: 'ejb/stateful') {
           sh '${MAVEN_HOME}/bin/mvn package'
         }
-        dir(path: 'ekb/stateless') {
+        dir(path: 'ejb/stateless') {
           sh '${MAVEN_HOME}/bin/mvn package'
         }
+        dir(path: 'jms') {
+          sh '${MAVEN_HOME}/bin/mvn package'
+        }        
       }
     }
 
