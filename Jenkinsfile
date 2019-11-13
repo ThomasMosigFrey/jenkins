@@ -11,55 +11,60 @@ pipeline {
         stage('SimpleApp') {
           agent { label 'linux'}
           steps {
-            dir(path: 'SimpleApp') {
-              sh '${MAVEN_HOME}/bin/mvn -X -s ../maven/settings.xml clean compile'
+            lock(resource: 'Lock') {
+              dir(path: 'SimpleApp') {
+                sh '${MAVEN_HOME}/bin/mvn -X -s ../maven/settings.xml clean compile'
+              }
             }
           }  
         }
         stage('Complete') {
           agent { label 'linux'}
           steps {
-            dir(path: 'ejb/stateless') {
-              sh '${MAVEN_HOME}/bin/mvn -X -s ../../maven/settings.xml clean compile'
+            lock(resource: 'Lock') {
+              dir(path: 'ejb/stateless') {
+                sh '${MAVEN_HOME}/bin/mvn -X -s ../../maven/settings.xml clean compile'
+              }
             }
           }  
         }
       }
     }
-    lock(resource: 'Lock') {
 
-      stage('test') {
-        agent { label 'linux'}
-        steps {
+    stage('test') {
+      agent { label 'linux'}
+      steps {
+        lock(resource: 'Lock') {
           dir(path: 'SimpleApp') {
             sh '${MAVEN_HOME}/bin/mvn test'
           }
         }
       }
-      stage('save_check_results') {
-        agent { label 'linux'}
-        steps {
-          archiveArtifacts artifacts: '**/*surefire*/*.xml' , allowEmptyArchive: true
-        }
-      } 
-
-      stage('package') {
-        agent { label 'linux'}
-        steps {
-          dir(path: 'SimpleApp') {
-            sh '${MAVEN_HOME}/bin/mvn package'
-          }
-        }
+    }
+    stage('save_check_results') {
+      agent { label 'linux'}
+      steps {
+        archiveArtifacts artifacts: '**/*surefire*/*.xml' , allowEmptyArchive: true
       }
+    } 
 
-      stage('upload_artifacts') {
-        agent { label 'linux'}
-        steps {
-          archiveArtifacts artifacts: '**/*.jar',  allowEmptyArchive: true
+    stage('package') {
+      agent { label 'linux'}
+      steps {
+        dir(path: 'SimpleApp') {
+          sh '${MAVEN_HOME}/bin/mvn package'
         }
       }
     }
+
+    stage('upload_artifacts') {
+      agent { label 'linux'}
+      steps {
+        archiveArtifacts artifacts: '**/*.jar',  allowEmptyArchive: true
+      }
+    }
   }
+ 
   post {
     failure {
         echo 'I will always say Hello again!'
