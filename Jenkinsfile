@@ -1,28 +1,5 @@
 
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@ThomasMosigFrey
 
-1
-0
-
-    0
-
-ThomasMosigFrey/DHL
-Code
-Issues 0
-Pull requests 0
-Projects 0
-Wiki
-Security
-Insights
-Settings
-DHL/Jenkinsfile
-@ThomasMosigFrey ThomasMosigFrey Update Jenkinsfile 558f311 11 minutes ago
-47 lines (44 sloc) 903 Bytes
 pipeline {
   agent { label 'linux' }
   tools {
