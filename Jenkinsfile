@@ -4,7 +4,7 @@ pipeline {
   agent none
 
   libraries {
-        lib 'DHL_Jenkins_LIB@1.0'
+        lib 'DHL_Jenkins_LIB@master'
   }
 
   tools {
