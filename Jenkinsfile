@@ -1,5 +1,6 @@
 
-
+lock(resource: 'staging-server') {
+  
 pipeline {
   agent none
   tools {
@@ -63,4 +64,5 @@ pipeline {
         echo 'I will always say Hello again!'
     }
   }
+}
 }
