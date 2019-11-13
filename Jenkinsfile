@@ -1,31 +1,79 @@
+
+Skip to content
+Pull requests
+Issues
+Marketplace
+Explore
+@ThomasMosigFrey
+
+1
+0
+
+    0
+
+ThomasMosigFrey/DHL
+Code
+Issues 0
+Pull requests 0
+Projects 0
+Wiki
+Security
+Insights
+Settings
+DHL/Jenkinsfile
+@ThomasMosigFrey ThomasMosigFrey Update Jenkinsfile 558f311 11 minutes ago
+47 lines (44 sloc) 903 Bytes
 pipeline {
-  agent { label 'linux' }
+  agent { label 'linux' }
+  tools {
+    jdk 'linux_jdk1.8.0_172'
+    maven 'linux_M3'
+  }
   stages {
-    stage('Init') {
-      steps {
-        git(url: 'https://github.com/ThomasMosigFrey/jenkins.git', branch: 'master', poll: true)
-      }
-    }
-    stage('Compile') {
+    stage('compile') {
       steps {
         dir(path: 'SimpleApp') {
-          sh 'mvn compile'
+          sh '${MAVEN_HOME}/bin/mvn -X -s maven/settings.xml clean compile'
         }
       }
     }
-    stage('Package') {
+    stage('sonarqube_checks') {
       steps {
         dir(path: 'SimpleApp') {
-          sh 'mvn package -DskipTests'
-          archiveArtifacts(artifacts: 'target/*jar', allowEmptyArchive: true, caseSensitive: true)
+          sh '${MAVEN_HOME}/bin/mvn sonar:sonar'
         }
       }
     }
+    stage('test') {
+      steps {
+        dir(path: 'SimpleApp') {
+          sh '${MAVEN_HOME}/bin/mvn test'
+        }
+      }
+    }
+    stage('save_check_results') {
+      steps {
+        archiveArtifacts artifacts: '**/surefire*/*.xml' , allowEmptyArchive: true
+      }
+    } 
+    
+    stage('package') {
+      steps {
+        dir(path: 'SimpleApp') {
+          sh '${MAVEN_HOME}/bin/mvn package'
+        }
+      }
+    }
+    
+    stage('upload_articats') {
+      steps {
+        archiveArtifacts artifacts: '**/*.jar',  allowEmptyArchive: true
+      }
+    }    
   }
   post {
-      success {
-       sh 'echo mvn deploy ...'
-       emailext( to: 'thomas@mosig-frey.de' , subject : 'build successful', body: 'Dear user, ...' ) 
-      }
+    failure {
+        echo 'I will always say Hello again!'
+    }
   }
 }
