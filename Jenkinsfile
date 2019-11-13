@@ -66,7 +66,7 @@ pipeline {
         dir(path: 'jms') {
           sh '${MAVEN_HOME}/bin/mvn test'
         }
-        junit '**/surefile*/*.xml
+        junit '**/surefire*/*.xml'
       }
     }
     stage('save_check_results') {
