@@ -1,5 +1,3 @@
-
-lock(resource: 'Lock') {
   
 pipeline {
   agent none
@@ -64,5 +62,4 @@ pipeline {
         echo 'I will always say Hello again!'
     }
   }
-}
 }
