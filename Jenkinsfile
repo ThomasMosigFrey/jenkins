@@ -1,5 +1,5 @@
 
-lock(resource: 'staging-server') {
+lock(resource: 'Lock') {
   
 pipeline {
   agent none
