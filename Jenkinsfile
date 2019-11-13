@@ -72,10 +72,7 @@ pipeline {
       steps {
         dir(path: 'SimpleApp') {
           sh '${MAVEN_HOME}/bin/mvn package'
-        }
-        dir(path: 'jms') {
-          sh '${MAVEN_HOME}/bin/mvn package'
-        }        
+        }      
       }
     }
 
