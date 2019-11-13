@@ -1,3 +1,4 @@
+import de.dhl.jenkins.groovy.*;
 
 pipeline {
   agent none
@@ -18,6 +19,7 @@ pipeline {
           agent { label 'linux'}
           steps {
             lock(resource: 'Lock') {
+              HelloWorld.sayHello();
               dir(path: 'SimpleApp') {
                 sh '${MAVEN_HOME}/bin/mvn -s ../maven/settings.xml clean compile'
               }
