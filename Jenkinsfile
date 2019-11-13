@@ -57,15 +57,6 @@ pipeline {
         dir(path: 'SimpleApp') {
           sh '${MAVEN_HOME}/bin/mvn test'
         }
-        dir(path: 'ejb/stateless') {
-          sh '${MAVEN_HOME}/bin/mvn test'
-        }
-        dir(path: 'ejb/stateful') {
-          sh '${MAVEN_HOME}/bin/mvn test'
-        }
-        dir(path: 'jms') {
-          sh '${MAVEN_HOME}/bin/mvn test'
-        }
         junit '**/surefire*/*.xml'
       }
     }
