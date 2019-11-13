@@ -72,7 +72,7 @@ pipeline {
           steps {
             lock(resource: 'Lock') {
               sh 'echo Hi'
-              build 'jenkins'
+              build 'jeeExamples/master'
             }
 
           }
