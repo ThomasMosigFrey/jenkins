@@ -14,13 +14,6 @@ pipeline {
         }
       }
     }
-    stage('sonarqube_checks') {
-      steps {
-        dir(path: 'SimpleApp') {
-          sh '${MAVEN_HOME}/bin/mvn sonar:sonar'
-        }
-      }
-    }
     stage('test') {
       steps {
         dir(path: 'SimpleApp') {
