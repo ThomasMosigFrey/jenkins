@@ -10,7 +10,7 @@ pipeline {
     stage('compile') {
       steps {
         dir(path: 'SimpleApp') {
-          sh '${MAVEN_HOME}/bin/mvn -X -s maven/settings.xml clean compile'
+          sh '${MAVEN_HOME}/bin/mvn -X -s ../maven/settings.xml clean compile'
         }
       }
     }
