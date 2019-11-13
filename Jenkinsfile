@@ -13,7 +13,7 @@ pipeline {
           steps {
             lock(resource: 'Lock') {
               dir(path: 'SimpleApp') {
-                sh '${MAVEN_HOME}/bin/mvn -X -s ../maven/settings.xml clean compile'
+                sh '${MAVEN_HOME}/bin/mvn -s ../maven/settings.xml clean compile'
               }
             }
           }  
@@ -23,10 +23,19 @@ pipeline {
           steps {
             lock(resource: 'Lock') {
               dir(path: 'ejb/stateless') {
-                sh '${MAVEN_HOME}/bin/mvn -X -s ../../maven/settings.xml clean compile'
+                sh '${MAVEN_HOME}/bin/mvn -s ../../maven/settings.xml clean compile'
               }
             }
-          }  
+          }
+          stage('Complete') {
+          agent { label 'linux'}
+          steps {
+            lock(resource: 'Lock') {
+              dir(path: 'ejb/stateful') {
+                sh '${MAVEN_HOME}/bin/mvn -s ../../maven/settings.xml clean compile'
+              }
+            }
+          } 
         }
       }
     }
@@ -52,6 +61,12 @@ pipeline {
       agent { label 'linux'}
       steps {
         dir(path: 'SimpleApp') {
+          sh '${MAVEN_HOME}/bin/mvn package'
+        }
+        dir(path: 'ekb/stateful') {
+          sh '${MAVEN_HOME}/bin/mvn package'
+        }
+        dir(path: 'ekb/stateless') {
           sh '${MAVEN_HOME}/bin/mvn package'
         }
       }
