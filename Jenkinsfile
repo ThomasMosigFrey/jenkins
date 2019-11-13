@@ -26,36 +26,39 @@ pipeline {
         }
       }
     }
-    stage('test') {
-      agent { label 'linux'}
-      steps {
-        dir(path: 'SimpleApp') {
-          sh '${MAVEN_HOME}/bin/mvn test'
+    lock(resource: 'Lock') {
+
+      stage('test') {
+        agent { label 'linux'}
+        steps {
+          dir(path: 'SimpleApp') {
+            sh '${MAVEN_HOME}/bin/mvn test'
+          }
+        }
+      }
+      stage('save_check_results') {
+        agent { label 'linux'}
+        steps {
+          archiveArtifacts artifacts: '**/*surefire*/*.xml' , allowEmptyArchive: true
+        }
+      } 
+
+      stage('package') {
+        agent { label 'linux'}
+        steps {
+          dir(path: 'SimpleApp') {
+            sh '${MAVEN_HOME}/bin/mvn package'
+          }
+        }
+      }
+
+      stage('upload_artifacts') {
+        agent { label 'linux'}
+        steps {
+          archiveArtifacts artifacts: '**/*.jar',  allowEmptyArchive: true
         }
       }
     }
-    stage('save_check_results') {
-      agent { label 'linux'}
-      steps {
-        archiveArtifacts artifacts: '**/*surefire*/*.xml' , allowEmptyArchive: true
-      }
-    } 
-    
-    stage('package') {
-      agent { label 'linux'}
-      steps {
-        dir(path: 'SimpleApp') {
-          sh '${MAVEN_HOME}/bin/mvn package'
-        }
-      }
-    }
-    
-    stage('upload_artifacts') {
-      agent { label 'linux'}
-      steps {
-        archiveArtifacts artifacts: '**/*.jar',  allowEmptyArchive: true
-      }
-    }    
   }
   post {
     failure {
