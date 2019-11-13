@@ -28,6 +28,7 @@ pipeline {
       }
     }
     stage('test') {
+      agent { label 'linux'}
       steps {
         dir(path: 'SimpleApp') {
           sh '${MAVEN_HOME}/bin/mvn test'
@@ -35,12 +36,14 @@ pipeline {
       }
     }
     stage('save_check_results') {
+      agent { label 'linux'}
       steps {
         archiveArtifacts artifacts: '**/*surefire*/*.xml' , allowEmptyArchive: true
       }
     } 
     
     stage('package') {
+      agent { label 'linux'}
       steps {
         dir(path: 'SimpleApp') {
           sh '${MAVEN_HOME}/bin/mvn package'
@@ -48,7 +51,8 @@ pipeline {
       }
     }
     
-    stage('upload_articats') {
+    stage('upload_artifacts') {
+      agent { label 'linux'}
       steps {
         archiveArtifacts artifacts: '**/*.jar',  allowEmptyArchive: true
       }
