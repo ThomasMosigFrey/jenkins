@@ -21,7 +21,7 @@ pipeline {
           agent { label 'linux'}
           steps {
             dir(path: 'ejb/stateless') {
-              sh '${MAVEN_HOME}/bin/mvn -X -s ../maven/settings.xml clean compile'
+              sh '${MAVEN_HOME}/bin/mvn -X -s ../../maven/settings.xml clean compile'
             }
           }  
         }
