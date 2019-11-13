@@ -1,16 +1,27 @@
 
 
 pipeline {
-  agent { label 'linux' }
+  agent none
   tools {
     jdk 'linux_jdk1.8.0_172'
     maven 'linux_M3'
   }
   stages {
-    stage('compile') {
-      steps {
-        dir(path: 'SimpleApp') {
-          sh '${MAVEN_HOME}/bin/mvn -X -s ../maven/settings.xml clean compile'
+    stage('parallel compiles') {
+      parallel {
+        stage('SimpleApp') {
+          agent { label 'linux'}
+          steps {
+            dir(path: 'SimpleApp') {
+              sh '${MAVEN_HOME}/bin/mvn -X -s ../maven/settings.xml clean compile'
+            }
+          }  
+        }
+        stage('Complete') {
+          agent { label 'linux'}
+          steps {
+            sh '${MAVEN_HOME}/bin/mvn -X -s ../maven/settings.xml clean compile
+          }  
         }
       }
     }
