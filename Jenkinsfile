@@ -23,7 +23,7 @@ pipeline {
     }
     stage('save_check_results') {
       steps {
-        archiveArtifacts artifacts: '**/surefire*/*.xml' , allowEmptyArchive: true
+        archiveArtifacts artifacts: '**/*surefire*/*.xml' , allowEmptyArchive: true
       }
     } 
     
