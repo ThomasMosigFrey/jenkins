@@ -18,7 +18,7 @@ pipeline {
             }
           }  
         }
-        stage('Complete') {
+        stage('stateless') {
           agent { label 'linux'}
           steps {
             lock(resource: 'Lock') {
@@ -27,12 +27,23 @@ pipeline {
               }
             }
           }
-          stage('Complete') {
+        }
+        stage('stateful') {
           agent { label 'linux'}
           steps {
             lock(resource: 'Lock') {
               dir(path: 'ejb/stateful') {
                 sh '${MAVEN_HOME}/bin/mvn -s ../../maven/settings.xml clean compile'
+              }
+            }
+          } 
+        }
+      stage('jaxws') {
+          agent { label 'linux'}
+          steps {
+            lock(resource: 'Lock') {
+              dir(path: 'jaxws') {
+                sh '${MAVEN_HOME}/bin/mvn -s ../maven/settings.xml clean compile'
               }
             }
           } 
