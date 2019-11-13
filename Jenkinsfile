@@ -68,6 +68,16 @@ pipeline {
           }
         }
 
+        stage('Dummy') {
+          steps {
+            lock(resource: 'Lock') {
+              sh 'echo Hi'
+              build 'jenkins'
+            }
+
+          }
+        }
+
       }
     }
 
