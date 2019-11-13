@@ -20,7 +20,6 @@ pipeline {
 
             }
 
-            libraryResource 'DHL_Jenkins_LIB'
           }
         }
 
@@ -64,16 +63,6 @@ pipeline {
                 sh '${MAVEN_HOME}/bin/mvn -s ../maven/settings.xml clean compile'
               }
 
-            }
-
-          }
-        }
-
-        stage('Dummy') {
-          steps {
-            lock(resource: 'Lock') {
-              sh 'echo Hi'
-              build 'jeeExamples/master'
             }
 
           }
