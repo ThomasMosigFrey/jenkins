@@ -38,11 +38,11 @@ pipeline {
             }
           } 
         }
-      stage('jaxws') {
+      stage('jms') {
           agent { label 'linux'}
           steps {
             lock(resource: 'Lock') {
-              dir(path: 'jaxws') {
+              dir(path: 'jms') {
                 sh '${MAVEN_HOME}/bin/mvn -s ../maven/settings.xml clean compile'
               }
             }
