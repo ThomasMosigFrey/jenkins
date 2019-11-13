@@ -19,7 +19,9 @@ pipeline {
           agent { label 'linux'}
           steps {
             lock(resource: 'Lock') {
-              HelloWorld.sayHello();
+              script {
+                  HelloWorld.sayHello();
+              }
               dir(path: 'SimpleApp') {
                 sh '${MAVEN_HOME}/bin/mvn -s ../maven/settings.xml clean compile'
               }
