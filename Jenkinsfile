@@ -1,11 +1,6 @@
 import de.dhl.jenkins.groovy.*;
 
 pipeline {
-  agent none
-
-  libraries {
-        lib 'DHL_Jenkins_LIB@master'
-  }
 
   tools {
     jdk 'linux_jdk1.8.0_172'
@@ -16,7 +11,6 @@ pipeline {
     stage('parallel compiles') {
       parallel {
         stage('SimpleApp') {
-          agent { label 'linux'}
           steps {
             lock(resource: 'Lock') {
               script {
@@ -29,7 +23,6 @@ pipeline {
           }  
         }
         stage('stateless') {
-          agent { label 'linux'}
           steps {
             lock(resource: 'Lock') {
               dir(path: 'ejb/stateless') {
@@ -39,7 +32,6 @@ pipeline {
           }
         }
         stage('stateful') {
-          agent { label 'linux'}
           steps {
             lock(resource: 'Lock') {
               dir(path: 'ejb/stateful') {
@@ -49,7 +41,6 @@ pipeline {
           } 
         }
       stage('jms') {
-          agent { label 'linux'}
           steps {
             lock(resource: 'Lock') {
               dir(path: 'jms') {
@@ -62,7 +53,6 @@ pipeline {
     }
 
     stage('test') {
-      agent { label 'linux'}
       steps {
         dir(path: 'SimpleApp') {
           sh '${MAVEN_HOME}/bin/mvn test'
@@ -78,7 +68,6 @@ pipeline {
     } 
 
     stage('package') {
-      agent { label 'linux'}
       steps {
         dir(path: 'SimpleApp') {
           sh '${MAVEN_HOME}/bin/mvn package'
@@ -87,7 +76,6 @@ pipeline {
     }
 
     stage('upload_artifacts') {
-      agent { label 'linux'}
       steps {
         archiveArtifacts artifacts: '**/*.jar',  allowEmptyArchive: true
       }
